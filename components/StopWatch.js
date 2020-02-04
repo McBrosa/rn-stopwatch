@@ -14,6 +14,10 @@ export default class StopWatch extends Component {
     };
   }
 
+  componentWillUnmount() {
+    clearInterval(this.state.intervalID);
+  }
+
   componentDidUpdate(prevProps) {
     const { running, reset, lap, addLapTime } = this.props;
     if (running !== prevProps.running) {
@@ -67,11 +71,9 @@ export default class StopWatch extends Component {
 
   render() {
     return (
-      <View>
-        <Text style={styles.blueText}>
-          {this.displayDuration(this.state.time)}
-        </Text>
-      </View>
+      <Text style={styles.blueText}>
+        {this.displayDuration(this.state.time)}
+      </Text>
     );
   }
 }

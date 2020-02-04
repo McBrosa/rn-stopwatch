@@ -1,3 +1,3 @@
 export const margin = {
-  margin: "1rem"
+  // margin: 10
 };

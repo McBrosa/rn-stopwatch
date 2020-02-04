@@ -6,7 +6,7 @@ import { StyleSheet, ScrollView } from "react-native";
 const Lap = params => {
   const length = params.times.length;
   return (
-    <ScrollView styles={styles.list}>
+    <ScrollView contentContainerStyle={styles.list}>
       {params.times.map((l, i) => (
         <ListItem
           key={i}

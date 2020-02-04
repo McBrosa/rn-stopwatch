@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { StyleSheet, View } from "react-native";
+import { StyleSheet, ScrollView, View } from "react-native";
 import StopWatch from "./components/StopWatch";
 import Lap from "./components/Lap";
 import { Layouts, Buttons } from "./styles";
@@ -55,25 +55,27 @@ export default class App extends Component {
 
     return (
       <View style={styles.container}>
-        <StopWatch
-          running={this.state.running}
-          reset={this.state.reset}
-          addLapTime={this.addLapTime}
-          lap={lap}
-        />
+        <View style={styles.timeRow}>
+          <StopWatch
+            running={this.state.running}
+            reset={this.state.reset}
+            addLapTime={this.addLapTime}
+            lap={lap}
+          />
+        </View>
         <View style={styles.buttonRow}>
           <Button
-            style={styles.button}
+            // style={styles.button}
             title={running ? "Stop" : "Start"}
             onPress={this._onStartStopButtonPress}
           />
           <Button
-            style={styles.button}
+            // style={styles.button}
             title="Reset"
             onPress={this._onResetButtonPress}
           />
           <Button
-            style={styles.button}
+            // style={styles.button}
             title="Lap"
             onPress={this._onLapButtonPress}
           />
@@ -90,6 +92,9 @@ const styles = StyleSheet.create({
   },
   buttonRow: {
     ...Layouts.spacedRow
+  },
+  timeRow: {
+    ...Layouts.column
   },
   button: {
     ...Buttons.margin

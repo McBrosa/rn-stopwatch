@@ -1,21 +1,26 @@
-export const spacedRow = {
-  flex: 1,
+export const row = {
+  flex: 2,
   flexDirection: "row",
-  justifyContent: "center",
-  marginBottom: "2rem",
-  alignItems: "center"
-};
-
-export const alignTop = {
-  flex: 1,
-  flexDirection: "column",
-  justifyContent: "center",
   alignItems: "flex-start"
 };
 
+export const spacedRow = {
+  ...row,
+  justifyContent: "space-evenly"
+};
+
+export const alignTop = {
+  flex: 2,
+  // height: 500,
+  // flexDirection: "column",
+  justifyContent: "flex-start"
+  // alignItems: "flex-start"
+};
+
 export const app = {
-  backgroundColor: "#fff",
-  flexDirection: "column",
-  justifyContent: "center",
-  alignSelf: "stretch"
+  flex: 1,
+  backgroundColor: "#fff"
+  // flexDirection: "column"
+  // justifyContent: "center",
+  // alignSelf: "stretch"
 };
