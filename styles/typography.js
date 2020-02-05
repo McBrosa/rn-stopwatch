@@ -1,7 +1,8 @@
-export const boldBlue = {
-  color: "blue",
+import { whitePurp } from "./colors";
+
+export const time = {
+  color: whitePurp,
   fontWeight: "bold",
-  fontSize: 30,
-  lineHeight: 60,
+  fontSize: 60,
   textAlign: "center"
 };

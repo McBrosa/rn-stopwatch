@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { Typography } from "../styles";
-import { StyleSheet, Text, View } from "react-native";
+import { StyleSheet, Text } from "react-native";
 
 export default class StopWatch extends Component {
   constructor(props) {
@@ -71,7 +71,7 @@ export default class StopWatch extends Component {
 
   render() {
     return (
-      <Text style={styles.blueText}>
+      <Text style={styles.timeText}>
         {this.displayDuration(this.state.time)}
       </Text>
     );
@@ -79,8 +79,8 @@ export default class StopWatch extends Component {
 }
 
 const styles = StyleSheet.create({
-  blueText: {
-    ...Typography.boldBlue
+  timeText: {
+    ...Typography.time
   }
 });
 

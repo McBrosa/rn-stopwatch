@@ -1,9 +1,11 @@
 import React, { Component } from "react";
-import { StyleSheet, ScrollView, View } from "react-native";
+import { StyleSheet, View, SafeAreaView } from "react-native";
 import StopWatch from "./components/StopWatch";
 import Lap from "./components/Lap";
-import { Layouts, Buttons } from "./styles";
+import { Layouts, Buttons, Colors } from "./styles";
 import { Button } from "react-native-elements";
+import { LinearGradient } from "expo-linear-gradient";
+import { Ionicons } from "@expo/vector-icons";
 
 export default class App extends Component {
   constructor(props) {
@@ -54,34 +56,54 @@ export default class App extends Component {
     const { running, lap, lapTimes } = this.state;
 
     return (
-      <View style={styles.container}>
-        <View style={styles.timeRow}>
-          <StopWatch
-            running={this.state.running}
-            reset={this.state.reset}
-            addLapTime={this.addLapTime}
-            lap={lap}
-          />
-        </View>
-        <View style={styles.buttonRow}>
-          <Button
-            // style={styles.button}
-            title={running ? "Stop" : "Start"}
-            onPress={this._onStartStopButtonPress}
-          />
-          <Button
-            // style={styles.button}
-            title="Reset"
-            onPress={this._onResetButtonPress}
-          />
-          <Button
-            // style={styles.button}
-            title="Lap"
-            onPress={this._onLapButtonPress}
-          />
-        </View>
-        <Lap times={lapTimes} />
-      </View>
+      <SafeAreaView style={styles.container}>
+        <LinearGradient
+          colors={[Colors.darkPurp, Colors.lightPurp]}
+          style={{ flex: 1 }}
+        >
+          <View style={styles.timeRow}>
+            <StopWatch
+              running={this.state.running}
+              reset={this.state.reset}
+              addLapTime={this.addLapTime}
+              lap={lap}
+            />
+          </View>
+          <View style={styles.buttonRow}>
+            <Button
+              style={styles.button}
+              title="Reset"
+              buttonStyle={styles.resetButton}
+              onPress={this._onResetButtonPress}
+            />
+            <Button
+              style={styles.button}
+              icon={
+                <Ionicons
+                  name={running ? "md-pause" : "md-play"}
+                  size={50}
+                  color="white"
+                />
+              }
+              buttonStyle={{
+                backgroundColor: `${running ? Colors.amber : Colors.green}`,
+                ...styles.pausePlayButton
+              }}
+              onPress={this._onStartStopButtonPress}
+            />
+            <Button
+              style={styles.button}
+              title={"Lap"}
+              buttonStyle={styles.lapButton}
+              disabled={!running}
+              onPress={this._onLapButtonPress}
+            />
+          </View>
+          <View style={styles.lapRow}>
+            <Lap times={lapTimes} />
+          </View>
+        </LinearGradient>
+      </SafeAreaView>
     );
   }
 }
@@ -91,12 +113,30 @@ const styles = StyleSheet.create({
     ...Layouts.app
   },
   buttonRow: {
-    ...Layouts.spacedRow
+    flex: 1,
+    flexDirection: "row",
+    justifyContent: "center",
+    alignItems: "center"
   },
   timeRow: {
-    ...Layouts.column
+    flex: 2,
+    justifyContent: "center"
   },
-  button: {
-    ...Buttons.margin
+  lapRow: {
+    flex: 4,
+    marginTop: 10
+  },
+  pausePlayButton: {
+    ...Buttons.squareButtonMedium,
+    marginRight: 20
+  },
+  resetButton: {
+    backgroundColor: Colors.charcoal,
+    ...Buttons.squareButtonSmall,
+    marginRight: 20
+  },
+  lapButton: {
+    ...Buttons.squareButtonSmall,
+    backgroundColor: Colors.charcoal
   }
 });

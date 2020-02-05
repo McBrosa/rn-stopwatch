@@ -1,28 +1,36 @@
 import React from "react";
-import { Layouts } from "../styles";
+import { Colors } from "../styles";
 import { ListItem } from "react-native-elements";
-import { StyleSheet, ScrollView } from "react-native";
+import { ScrollView } from "react-native";
 
 const Lap = params => {
   const length = params.times.length;
   return (
-    <ScrollView contentContainerStyle={styles.list}>
+    <ScrollView>
       {params.times.map((l, i) => (
         <ListItem
           key={i}
           title={`Lap ${length - i}`}
           subtitle={l.value}
-          bottomDivider
+          containerStyle={{
+            backgroundColor: Colors.clear
+          }}
+          contentContainerStyle={{
+            flex: 1,
+            alignItems: "center"
+          }}
+          subtitleStyle={{
+            fontSize: 30,
+            color: Colors.whitePurp
+          }}
+          titleStyle={{
+            fontWeight: "bold",
+            color: Colors.whitePurp
+          }}
         />
       ))}
     </ScrollView>
   );
 };
-
-const styles = StyleSheet.create({
-  list: {
-    ...Layouts.alignTop
-  }
-});
 
 export default Lap;
