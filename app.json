@@ -2,6 +2,8 @@
   "expo": {
     "name": "stopwatch",
     "slug": "rn-stopwatch",
+    "description": "React-Native stopwatch",
+    "githubUrl": "https://github.com/McBrosa/rn-stopwatch",
     "privacy": "public",
     "sdkVersion": "36.0.0",
     "platforms": ["ios", "android", "web"],
