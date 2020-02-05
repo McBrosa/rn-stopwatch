@@ -20,7 +20,13 @@
     },
     "assetBundlePatterns": ["**/*"],
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "com.broloft.stopwatch",
+      "buildNumber": "1.0.0"
+    },
+    "android": {
+      "package": "com.broloft.stopwatch",
+      "versionCode": 1
     }
   }
 }
